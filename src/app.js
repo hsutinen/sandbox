@@ -1,6 +1,15 @@
 var Table = React.createClass({
+
+  getInitialState: function() {
+    return { contents: [ ["A", "B", "C", "D"],
+                         ["E", "F", "G", "H"],
+                         ["I", "J", "K", "L"],
+                         ["M", "N", "O", "P"] ]
+    };
+  },
+
   render: function() {
-    var tableRows = this.props.data.map(function(row, i) {
+    var tableRows = this.state.contents.map(function(row, i) {
       return (
         <TableRow rowId = {i} data = {row} />
       );
@@ -30,13 +39,10 @@ var TableRow = React.createClass({
 });
 
 
-var tableData = [ ["A", "B", "C", "D"],
-                  ["E", "F", "G", "H"],
-                  ["I", "J", "K", "L"],
-                  ["M", "N", "O", "P"] ];
+var tableData =
 
 ReactDOM.render(
-  <Table data = {tableData}/>,
+  <Table />,
   document.getElementById('content')
 );
 
