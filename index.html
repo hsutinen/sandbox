@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+		<script src="build/react.js"></script>
+		<script src="build/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script type="text/babel">
+
+
+var tableData = [ ["Table Content", " jotain muuta"], ["asdf", "blaa"] ];
+
+var Table = React.createClass({
+  render: function() {
+  	    var tableRows = this.props.data.map(function(row, i) {
+      return (
+        <TableRow rowId = {i} data = {row} />
+      );
+    });
+    return (
+      <div className="table">
+        <table>
+        	{tableRows}
+        </table>
+      </div>
+    );
+  }
+});
+
+var TableRow = React.createClass({
+	render: function() {
+				var rowId = this.props.rowId;
+				return (
+
+				<tr>
+        	{this.props.data.map(function(text, i) {
+          	return <td id = {rowId.toString() + i.toString()}>{text}</td>;
+        	})}
+				</tr>
+		);
+	}	
+});
+
+
+ReactDOM.render(
+  <Table data = {tableData}/>,
+  document.getElementById('content')
+);
+    </script>
+  </body>
+</html>

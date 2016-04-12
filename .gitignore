@@ -2,6 +2,11 @@
 Thumbs.db
 ehthumbs.db
 
+build/*
+*.bak
+*.swp
+*~
+
 # Folder config file
 Desktop.ini
 
