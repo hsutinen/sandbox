@@ -39,8 +39,6 @@ var TableRow = React.createClass({
 });
 
 
-var tableData =
-
 ReactDOM.render(
   <Table />,
   document.getElementById('content')
