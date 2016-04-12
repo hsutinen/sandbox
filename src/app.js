@@ -30,7 +30,10 @@ var TableRow = React.createClass({
 });
 
 
-var tableData = [ ["Table Content", " jotain muuta"], ["asdf", "blaa"] ];
+var tableData = [ ["A", "B", "C", "D"],
+                  ["E", "F", "G", "H"],
+                  ["I", "J", "K", "L"],
+                  ["M", "N", "O", "P"] ];
 
 ReactDOM.render(
   <Table data = {tableData}/>,
