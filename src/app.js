@@ -53,7 +53,7 @@ var TableRow = React.createClass({
       return (
         <tr>
           {this.props.data.map(function(text, i) {
-            return <td id = {rowId.toString() + i.toString()}>{text}</td>;
+            return <td id = {rowId.toString() + i.toString()}><button>{text}</button></td>;
           })}
         </tr>
       );
