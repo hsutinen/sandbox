@@ -1,4 +1,7 @@
-
+var gameState =  [ ["A", "B", "C", "D"],
+                   ["E", "F", "G", "H"],
+                   ["I", "J", "K", "L"],
+                   ["M", "N", "O", "P"] ];
 
 var Table = React.createClass({
   correctContents: [ ["A", "B", "C", "D"],
@@ -7,15 +10,8 @@ var Table = React.createClass({
                      ["M", "N", "O", "P"] ],
 
   getInitialState: function() {
-    return { contents: [ ["A", "B", "C", "D"],
-                         ["E", "F", "G", "H"],
-                         ["I", "J", "K", "L"],
-                         ["M", "N", "O", "P"] ]
+    return { contents: gameState
     };
-  },
-
-  boardClick: function() {
-    window.alert("asdf");
   },
 
   shuffle: function() {
@@ -58,8 +54,8 @@ var TableRow = React.createClass({
         <tr>
           {this.props.data.map(function(text, i) {
             return (
-                  <td id = {rowId.toString() + i.toString()}>
-                    <button>{text}</button>
+                  <td>
+                    <button id={rowId.toString() + i.toString()}>{text}</button>
                   </td>
             );
           })}
