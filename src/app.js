@@ -14,6 +14,10 @@ var Table = React.createClass({
     };
   },
 
+  boardClick: function() {
+    window.alert("asdf");
+  },
+
   shuffle: function() {
     var newContents = this.state.contents;
     var x = newContents[1][1];
@@ -53,7 +57,11 @@ var TableRow = React.createClass({
       return (
         <tr>
           {this.props.data.map(function(text, i) {
-            return <td id = {rowId.toString() + i.toString()}><button>{text}</button></td>;
+            return (
+                  <td id = {rowId.toString() + i.toString()}>
+                    <button>{text}</button>
+                  </td>
+            );
           })}
         </tr>
       );
