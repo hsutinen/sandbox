@@ -10,14 +10,33 @@ var Table = React.createClass({
                      ["M", "N", "O", "P"] ],
 
   getInitialState: function() {
-    return { contents: gameState
+    return { contents: gameState,
+             previousClick: undefined
     };
   },
 
+  swapContents: function(a, b) {
+    var newContents = this.state.contents;
+    var x = newContents[a[0]][a[1]];
+    newContents[a[0]][a[1]] = newContents[b[0]][b[1]];
+    newContents[b[0]][b[1]] = x;
+    this.setState( { contents: newContents,
+                     previousClick: undefined } );
+  },
+
   boardClick: function(i) {
+    var swapContents = this.swapContents;
+    var previousClick = this.state.previousClick 
+    var board = this;
     return function(j) {
-      return function() { 
-          window.alert("clicked position " + i + "," + j);
+      return function() {
+          var click = [i,j];
+          if (previousClick === undefined) {
+            board.setState({ contents: gameState,
+                            previousClick: click });
+          } else {
+            swapContents(previousClick, click);
+          }
       }
     }
   },
