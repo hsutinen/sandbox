@@ -14,6 +14,14 @@ var Table = React.createClass({
     };
   },
 
+  boardClick: function(i) {
+    return function(j) {
+      return function() { 
+          window.alert("clicked position " + i + "," + j);
+      }
+    }
+  },
+
   shuffle: function() {
     var newContents = this.state.contents;
     var x = newContents[1][1];
@@ -23,9 +31,10 @@ var Table = React.createClass({
   },
 
   render: function() {
+    var clickHandler = this.boardClick;
     var tableRows = this.state.contents.map(function(row, i) {
       return (
-        <TableRow rowId = {i} data = {row} />
+        <TableRow clickHandler = {clickHandler} rowId = {i} data = {row} />
       );
     });
 
@@ -50,12 +59,13 @@ var Table = React.createClass({
 var TableRow = React.createClass({
 	render: function() {
     var rowId = this.props.rowId;
+    var clickHandler = this.props.clickHandler;
       return (
         <tr>
-          {this.props.data.map(function(text, i) {
+          {this.props.data.map(function(text, i) {                                           
             return (
                   <td>
-                    <button id={rowId.toString() + i.toString()}>{text}</button>
+                    <button onClick={clickHandler(i)(rowId)} id={rowId.toString() + i.toString()}>{text}</button>
                   </td>
             );
           })}
