@@ -30,7 +30,7 @@ var Table = React.createClass({
     var board = this;
     return function(j) {
       return function() {
-          var click = [i,j];
+          var click = [j,i];
           if (previousClick === undefined) {
             board.setState({ contents: gameState,
                             previousClick: click });
@@ -42,11 +42,14 @@ var Table = React.createClass({
   },
 
   shuffle: function() {
-    var newContents = this.state.contents;
-    var x = newContents[1][1];
-    newContents[1][1] = newContents[2][2];
-    newContents[2][2] = x;
-    this.setState( { contents: newContents } );
+    var n;
+    for (n = 0; n < 5; n++) {
+      var i = Math.floor(Math.random() * 4);
+      var j = Math.floor(Math.random() * 4);
+      var k = Math.floor(Math.random() * 4);
+      var l = Math.floor(Math.random() * 4);
+      this.swapContents([i,j],[k,l]);
+    }
   },
 
   render: function() {
@@ -59,6 +62,7 @@ var Table = React.createClass({
 
   return (
     <div className="table">
+      <span> Organize the letters in alphabetical order by clicking them! </span>
       <table>
         {tableRows}
       </table>
